@@ -5,11 +5,18 @@ export const router = createRouter({
   routes: [
     {
       path: '',
-      name: 'main',
+      name: 'home',
       component: () => import('@/layouts/MainLayout.vue'),
-      meta: {
-        title: 'Dashboard',
-      },
+      meta: { title: 'Home' },
+      redirect: { name: 'dashboard' },
+      children: [
+        {
+          path: 'dashboard',
+          name: 'dashboard',
+          meta: { title: 'Dashboard' },
+          component: () => import('@/features/dashboard/pages/DashboardPage.vue'),
+        },
+      ],
     },
   ],
 })
