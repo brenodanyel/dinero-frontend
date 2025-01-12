@@ -1,9 +1,9 @@
-<script setup lang="ts">
-import AppHeader from '../components/AppHeader.vue';
-</script>
-
 <template>
-	<div class="h-screen">
-		<AppHeader />
-	</div>
+  <div class="h-screen">
+    <AppHeader />
+
+    <div class="p-4">
+      <RouterView />
+    </div>
+  </div>
 </template>
