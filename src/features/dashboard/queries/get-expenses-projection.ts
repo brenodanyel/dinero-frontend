@@ -14,8 +14,8 @@ export function useGetExpensesProjectionQuery() {
 
       for (let i = 0; i < 12; i++) {
         expenses.push({
-          month: dayjs().subtract(i, 'month').format('MMMM'),
-          value: Math.floor(Math.random() * 1000000),
+          month: dayjs().add(i, 'month').format('MMMM/YYYY'),
+          value: Math.floor(Math.random() * 10000),
         })
       }
 
