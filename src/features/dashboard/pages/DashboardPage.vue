@@ -44,7 +44,10 @@
 
     <UCard class="md:col-span-4">
       <template #header>
-        <p class="font-bold text-2xl">Despesas Recentes</p>
+        <div class="flex items-center justify-between">
+          <p class="font-bold text-2xl">Despesas</p>
+          <UButton label="Registrar Despesa" @click="onClickRegisterExpense" />
+        </div>
       </template>
 
       <template #default>
@@ -58,9 +61,26 @@
 import { formatCurrency } from '@/utils'
 import { dayjs } from '@/utils/dayjs'
 import { useGetDashboardQuery } from '../queries/get-dashboard'
-
 import LastExpensesTable from '../components/LastExpensesTable.vue'
 import ExpensesProjectionGraph from '../components/ExpensesProjectionGraph.vue'
+import ExpenseModal from '../components/ExpenseModal.vue'
+import { ComponentProps } from '@/types/component-props'
 
 const getDashboardQuery = useGetDashboardQuery()
+
+const modal = useModal()
+
+function onClickRegisterExpense() {
+  modal.open(ExpenseModal, {
+    title: 'Registrar Despesa',
+    initialFormData: {},
+    async submit(data) {
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+      console.log(data)
+    },
+    onHide() {
+      modal.close()
+    },
+  } as ComponentProps<typeof ExpenseModal>)
+}
 </script>
