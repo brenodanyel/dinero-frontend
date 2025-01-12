@@ -1,14 +1,15 @@
-import './assets/main.css';
+import './assets/main.css'
 
-import uiPlugin from '@nuxt/ui/vue-plugin';
-import { createApp } from 'vue';
-import { router } from './router';
+import uiPlugin from '@nuxt/ui/vue-plugin'
+import { VueQueryPlugin } from '@tanstack/vue-query'
+import { createApp } from 'vue'
+import { router } from './router'
+import App from './App.vue'
 
-import App from './App.vue';
+const app = createApp(App)
 
-const app = createApp(App);
+app.use(uiPlugin)
+app.use(router)
+app.use(VueQueryPlugin)
 
-app.use(uiPlugin);
-app.use(router);
-
-app.mount('#app');
+app.mount('#app')
