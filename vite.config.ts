@@ -1,8 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-
-import ui from '@nuxt/ui/vite'
+import ui from './nuxt-ui'
 
 // https://vitejs.dev/config/
 export default defineConfig({
