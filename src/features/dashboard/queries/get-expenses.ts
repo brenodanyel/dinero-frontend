@@ -16,7 +16,7 @@ export function useGetExpensesQuery() {
     queryFn: async () => {
       const expenses: Expense[] = []
 
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 10; i++) {
         const MAX_INSTALLMENTS = 10
         const installments = Math.ceil(Math.random() * MAX_INSTALLMENTS)
 
