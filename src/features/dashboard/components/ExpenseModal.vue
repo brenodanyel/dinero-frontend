@@ -19,7 +19,7 @@
           <UInputNumber
             v-model="formState.value"
             orientation="vertical"
-            :step="0.1"
+            :step="0.01"
             :format-options="{
               style: 'currency',
               currency: 'BRL',
@@ -32,7 +32,7 @@
           <UDatePicker v-model="formState.date" />
         </UFormField>
 
-        <UFormField label="Número de parcelas" name="installments">
+        <UFormField label="Número de parcelas restantes" name="installments">
           <UInputNumber v-model="formState.installments" :step="1" />
         </UFormField>
 
