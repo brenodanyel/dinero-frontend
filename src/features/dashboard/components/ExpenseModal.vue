@@ -20,6 +20,7 @@
             v-model="formState.value"
             orientation="vertical"
             :step="0.01"
+            placeholder="Digite o valor da despesa"
             :format-options="{
               style: 'currency',
               currency: 'BRL',
