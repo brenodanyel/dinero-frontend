@@ -1,5 +1,9 @@
 <template>
-  <UTable :data="getExpensesQuery.data.value" :columns :loading="getExpensesQuery.isLoading.value">
+  <UTable
+    :columns
+    :data="getExpensesQuery.data.value?.data"
+    :loading="getExpensesQuery.isLoading.value"
+  >
     <template #id-cell="{ row }">
       <UDropdownMenu
         :items="[
@@ -25,17 +29,20 @@
 
 <script setup lang="ts">
 import { TableColumn } from '@nuxt/ui'
-import { Expense, useGetExpensesQuery } from '../queries/get-expenses'
+import { useGetExpensesQuery } from '../queries/get-expenses'
 import { formatCurrency } from '@/utils'
 import { dayjs } from '@/utils/dayjs'
 import ExpenseModal from '../components/ExpenseModal.vue'
 import { ComponentProps } from '@/types/component-props'
 import ConfirmationModal from '@/components/ConfirmationModal.vue'
+import { controllers } from '@/api/client'
 
 const getExpensesQuery = useGetExpensesQuery()
 const modal = useModal()
 
-const columns: TableColumn<Expense>[] = [
+type ExpenseDataItem = controllers.GetExpensesResponse['data'][number]
+
+const columns: TableColumn<ExpenseDataItem>[] = [
   { accessorKey: 'description', header: 'Nome' },
   {
     accessorKey: 'value',
@@ -65,7 +72,7 @@ const columns: TableColumn<Expense>[] = [
   { accessorKey: 'id', header: 'Ações' },
 ]
 
-function onClickEditExpense(expense: Expense) {
+function onClickEditExpense(expense: ExpenseDataItem) {
   modal.open(ExpenseModal, {
     title: 'Editar Despesa',
     initialFormData: {
@@ -86,7 +93,7 @@ function onClickEditExpense(expense: Expense) {
   } satisfies ComponentProps<typeof ExpenseModal>)
 }
 
-function onClickDeleteExpense(expense: Expense) {
+function onClickDeleteExpense(expense: ExpenseDataItem) {
   modal.open(ConfirmationModal, {
     title: 'Excluir Despesa',
     description: 'Tem certeza que deseja excluir essa despesa? Essa ação não poderá ser desfeita.',
