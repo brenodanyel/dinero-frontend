@@ -12,7 +12,7 @@
         class="grid grid-cols-1 md:grid-cols-2 gap-2"
       >
         <UFormField label="Descrição" name="description">
-          <UInput v-model="formState.description" placeholder="Digite o nome da despesa" />
+          <UInput v-model="formState.description" placeholder="Digite a descrição da despesa" />
         </UFormField>
 
         <UFormField label="Valor" name="value">
