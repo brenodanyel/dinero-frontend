@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/vue-query'
 
 export type Expense = {
   id: string
-  name: string
+  description: string
   value: number
   date: string
   category: ExpenseCategory
@@ -23,7 +23,7 @@ export function useGetExpensesQuery() {
 
         expenses.push({
           id: i.toString(),
-          name: 'Aluguel',
+          description: 'Aluguel',
           value: Math.floor(Math.random() * 1000000),
           category: 'Moradia',
           date: dayjs()

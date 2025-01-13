@@ -11,8 +11,8 @@
         @submit="onSubmit"
         class="grid grid-cols-1 md:grid-cols-2 gap-2"
       >
-        <UFormField label="Nome" name="name">
-          <UInput v-model="formState.name" placeholder="Digite o nome da despesa" />
+        <UFormField label="Descrição" name="description">
+          <UInput v-model="formState.description" placeholder="Digite o nome da despesa" />
         </UFormField>
 
         <UFormField label="Valor" name="value">
@@ -89,7 +89,7 @@ const props = defineProps<{
 const formHTMLElement = useTemplateRef('form')
 
 const formSchema = z.object({
-  name: z
+  description: z
     .string({ message: 'Campo obrigatório' })
     .trim()
     .min(1, { message: 'Insira um nome válido' }),
@@ -104,7 +104,7 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>
 
 const formState = ref<FormSchema>({
-  name: '',
+  description: '',
   value: 0,
   date: new Date(),
   installments: 1,

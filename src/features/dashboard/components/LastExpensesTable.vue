@@ -36,7 +36,7 @@ const getExpensesQuery = useGetExpensesQuery()
 const modal = useModal()
 
 const columns: TableColumn<Expense>[] = [
-  { accessorKey: 'name', header: 'Nome' },
+  { accessorKey: 'description', header: 'Nome' },
   {
     accessorKey: 'value',
     header: 'Valor',
@@ -69,7 +69,7 @@ function onClickEditExpense(expense: Expense) {
   modal.open(ExpenseModal, {
     title: 'Editar Despesa',
     initialFormData: {
-      name: expense.name,
+      description: expense.description,
       value: expense.value / 100,
       date: new Date(expense.date),
       installments: expense.installments,

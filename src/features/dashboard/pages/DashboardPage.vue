@@ -74,7 +74,7 @@ function onClickRegisterExpense() {
   modal.open(ExpenseModal, {
     title: 'Registrar Despesa',
     initialFormData: {
-      name: '',
+      description: '',
       value: 0,
       date: new Date(),
       installments: 1,
