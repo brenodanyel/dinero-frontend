@@ -1,3 +1,4 @@
+import { ExpenseCategory } from '@/data/expense-categories'
 import { dayjs } from '@/utils/dayjs'
 import { useQuery } from '@tanstack/vue-query'
 
@@ -6,8 +7,8 @@ export type Expense = {
   name: string
   value: number
   date: string
-  category: string
-  installments: number | null
+  category: ExpenseCategory
+  installments: number
 }
 
 export function useGetExpensesQuery() {
