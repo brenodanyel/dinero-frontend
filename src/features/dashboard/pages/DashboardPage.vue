@@ -65,8 +65,10 @@ import LastExpensesTable from '../components/LastExpensesTable.vue'
 import ExpensesProjectionGraph from '../components/ExpensesProjectionGraph.vue'
 import ExpenseModal from '../components/ExpenseModal.vue'
 import { ComponentProps } from '@/types/component-props'
+import { useCreateExpenseMutation } from '../queries/create-expense'
 
 const getDashboardQuery = useGetDashboardQuery()
+const createExpenseMutation = useCreateExpenseMutation()
 
 const modal = useModal()
 
@@ -75,14 +77,21 @@ function onClickRegisterExpense() {
     title: 'Registrar Despesa',
     initialFormData: {
       description: '',
-      value: 0,
+      value: undefined,
       date: new Date(),
       installments: 1,
-      category: 'Outros',
+      category: undefined,
     },
     async submit(data) {
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      console.log(data)
+      await createExpenseMutation
+        .mutateAsync({
+          description: data.description,
+          value: data.value * 100,
+          date: data.date.toISOString(),
+          installments: data.installments,
+          category: data.category,
+        })
+        .then(() => modal.close())
     },
     onHide() {
       modal.close()
