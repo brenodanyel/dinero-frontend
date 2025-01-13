@@ -69,11 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  expenseCategoriesArray,
-  expenseCategoriesSettings,
-  ExpenseCategory,
-} from '@/data/expense-categories'
+import { expenseCategoriesSettings } from '@/data/expense-categories'
 import { FormSubmitEvent } from '@nuxt/ui'
 import { ref, useTemplateRef, watch } from 'vue'
 import * as z from 'zod'
@@ -98,7 +94,7 @@ const formSchema = z.object({
     .min(0.01, { message: 'Insira um valor válido.' }),
   date: z.date({ message: 'Campo obrigatório' }),
   installments: z.number({ message: 'Campo obrigatório' }),
-  category: z.enum(expenseCategoriesArray, { message: 'Campo obrigatório' }),
+  category: z.string({ message: 'Campo obrigatório' }),
 })
 
 type FormSchema = z.infer<typeof formSchema>
@@ -108,7 +104,7 @@ const formState = ref<FormSchema>({
   value: 0,
   date: new Date(),
   installments: 1,
-  category: undefined as unknown as ExpenseCategory,
+  category: '',
 })
 
 async function onSubmit(event: FormSubmitEvent<FormSchema>) {

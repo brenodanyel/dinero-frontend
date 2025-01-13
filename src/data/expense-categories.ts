@@ -1,17 +1,5 @@
-export const expenseCategoriesArray = [
-  'Alimentação',
-  'Educação',
-  'Lazer',
-  'Moradia',
-  'Saúde',
-  'Transporte',
-  'Outros',
-] as const
-
-export type ExpenseCategory = (typeof expenseCategoriesArray)[number]
-
 type ExpenseCategories = Record<
-  ExpenseCategory,
+  string,
   {
     icon: string
   }
