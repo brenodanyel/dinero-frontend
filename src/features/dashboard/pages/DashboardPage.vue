@@ -73,7 +73,13 @@ const modal = useModal()
 function onClickRegisterExpense() {
   modal.open(ExpenseModal, {
     title: 'Registrar Despesa',
-    initialFormData: {},
+    initialFormData: {
+      name: '',
+      value: 0,
+      date: new Date(),
+      installments: 1,
+      category: 'Outros',
+    },
     async submit(data) {
       await new Promise((resolve) => setTimeout(resolve, 2000))
       console.log(data)
