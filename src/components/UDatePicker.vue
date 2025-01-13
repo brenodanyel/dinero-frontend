@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { CalendarDate, DateFormatter, getLocalTimeZone } from '@internationalized/date'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
+
+const props = defineProps<{
+  minValue?: Date
+  maxValue?: Date
+}>()
 
 const df = new DateFormatter('pt-BR', {
   dateStyle: 'short',
@@ -29,6 +34,24 @@ watch(
     immediate: true,
   },
 )
+
+const minDate = computed(() => {
+  if (!props.minValue) return undefined
+  return new CalendarDate(
+    props.minValue.getFullYear(),
+    props.minValue.getMonth() + 1,
+    props.minValue.getDate(),
+  )
+})
+
+const maxDate = computed(() => {
+  if (!props.maxValue) return undefined
+  return new CalendarDate(
+    props.maxValue.getFullYear(),
+    props.maxValue.getMonth() + 1,
+    props.maxValue.getDate(),
+  )
+})
 </script>
 
 <template>
@@ -49,6 +72,8 @@ watch(
       <UCalendar
         v-model="internalValue"
         class="p-2"
+        :min-value="minDate"
+        :max-date="maxDate"
         @update:model-value="
           () => {
             if (!internalValue) {

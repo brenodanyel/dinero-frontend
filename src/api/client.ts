@@ -80,6 +80,12 @@ export namespace dinero {
             const resp = await this.baseClient.callAPI("GET", `/expenses`)
             return await resp.json() as controllers.GetExpensesResponse
         }
+
+        public async getExpensesProjection(): Promise<controllers.GetExpensesProjectionResponse> {
+            // Now make the actual call to the API
+            const resp = await this.baseClient.callAPI("GET", `/expenses/projection`)
+            return await resp.json() as controllers.GetExpensesProjectionResponse
+        }
     }
 }
 
@@ -94,6 +100,13 @@ export namespace controllers {
         date: string
         installments: number
         value: number
+    }
+
+    export interface GetExpensesProjectionResponse {
+        data: {
+            month: string
+            value: number
+        }[]
     }
 
     export interface GetExpensesResponse {

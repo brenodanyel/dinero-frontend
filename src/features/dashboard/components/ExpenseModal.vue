@@ -30,7 +30,7 @@
         </UFormField>
 
         <UFormField label="Data" name="date">
-          <UDatePicker v-model="formState.date" />
+          <UDatePicker v-model="formState.date" :min-date="new Date()" :max-value="new Date()" />
         </UFormField>
 
         <UFormField label="Número de parcelas restantes" name="installments">

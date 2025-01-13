@@ -17,11 +17,11 @@ const getThemeColor = (variable: string) =>
   getComputedStyle(document.documentElement).getPropertyValue(variable).trim()
 
 const chartData = computed<ChartData<'line'>>(() => ({
-  labels: getExpensesProjectionQuery.data.value?.map((item) => item.month) ?? [],
+  labels: getExpensesProjectionQuery.data.value?.data.map((item) => item.month) ?? [],
   datasets: [
     {
       label: 'Despesas',
-      data: getExpensesProjectionQuery.data.value?.map((item) => item.value) ?? [],
+      data: getExpensesProjectionQuery.data.value?.data.map((item) => item.value) ?? [],
       tension: 0.3,
       borderColor: getThemeColor('--ui-primary'),
       fill: true,
