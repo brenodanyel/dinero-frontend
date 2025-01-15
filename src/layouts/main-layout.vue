@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen">
-    <AppHeader />
+    <app-header />
 
     <div class="p-4">
       <RouterView />

@@ -1,27 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { authRoutes } from './features/auth/auth-routes'
+import { dashboardRoutes } from './features/dashboard/dashboard-routes'
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '',
-      name: 'home',
-      component: () => import('@/layouts/MainLayout.vue'),
-      meta: { title: 'Home' },
-      redirect: { name: 'dashboard' },
-      children: [
-        {
-          path: 'dashboard',
-          name: 'dashboard',
-          meta: { title: 'Dashboard' },
-          component: () => import('@/features/dashboard/pages/DashboardPage.vue'),
-        },
-      ],
+      meta: { title: '' },
+      redirect: { name: 'home' },
+      children: [...authRoutes, ...dashboardRoutes],
     },
   ],
 })
-
-import 'vue-router'
 
 declare module 'vue-router' {
   interface RouteMeta {

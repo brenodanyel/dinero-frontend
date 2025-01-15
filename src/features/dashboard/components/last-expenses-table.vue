@@ -28,14 +28,14 @@
 </template>
 
 <script setup lang="ts">
-import { TableColumn } from '@nuxt/ui'
-import { useGetExpensesQuery } from '../queries/get-expenses'
+import { controllers } from '@/api/client'
+import ConfirmationModal from '@/components/confirmation-modal.vue'
+import { ComponentProps } from '@/types/component-props'
 import { formatCurrency } from '@/utils'
 import { dayjs } from '@/utils/dayjs'
-import ExpenseModal from '../components/ExpenseModal.vue'
-import { ComponentProps } from '@/types/component-props'
-import ConfirmationModal from '@/components/ConfirmationModal.vue'
-import { controllers } from '@/api/client'
+import { TableColumn } from '@nuxt/ui'
+import { useGetExpensesQuery } from '../queries/get-expenses'
+import ExpenseModal from './expense-modal.vue'
 
 const getExpensesQuery = useGetExpensesQuery()
 const modal = useModal()

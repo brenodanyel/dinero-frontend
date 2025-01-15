@@ -58,14 +58,14 @@
 </template>
 
 <script setup lang="ts">
+import { ComponentProps } from '@/types/component-props'
 import { formatCurrency } from '@/utils'
 import { dayjs } from '@/utils/dayjs'
-import { useGetDashboardQuery } from '../queries/get-dashboard'
-import LastExpensesTable from '../components/LastExpensesTable.vue'
-import ExpensesProjectionGraph from '../components/ExpensesProjectionGraph.vue'
-import ExpenseModal from '../components/ExpenseModal.vue'
-import { ComponentProps } from '@/types/component-props'
+import ExpenseModal from '../components/expense-modal.vue'
+import ExpensesProjectionGraph from '../components/expenses-projection-graph.vue'
+import LastExpensesTable from '../components/last-expenses-table.vue'
 import { useCreateExpenseMutation } from '../queries/create-expense'
+import { useGetDashboardQuery } from '../queries/get-dashboard'
 
 const getDashboardQuery = useGetDashboardQuery()
 const createExpenseMutation = useCreateExpenseMutation()

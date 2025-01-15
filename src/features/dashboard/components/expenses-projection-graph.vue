@@ -3,11 +3,11 @@
 </template>
 
 <script setup lang="ts">
-import { Line } from 'vue-chartjs'
-import { computed } from 'vue'
-import { useGetExpensesProjectionQuery } from '../queries/get-expenses-projection'
-import { Chart, ChartData, ChartOptions, registerables } from 'chart.js'
 import { formatCurrency } from '@/utils'
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js'
+import { computed } from 'vue'
+import { Line } from 'vue-chartjs'
+import { useGetExpensesProjectionQuery } from '../queries/get-expenses-projection'
 
 Chart.register(...registerables)
 
